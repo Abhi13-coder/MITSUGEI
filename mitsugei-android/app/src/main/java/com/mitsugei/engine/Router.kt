@@ -27,17 +27,17 @@ object Router {
     // genuinely full coverage in a couple of shards (~3.4GB total) rather
     // than having to walk deep into a multi-hundred-GB corpus first.
     val CHAINS: Map<String, List<String>> = mapOf(
-        "latin" to listOf(
-            "open-markdown",
-            "fineweb-edu-sample-10bt",
-            "refinedweb-sample",
-            "fineweb-sample-10bt",
-            "c4-en",
-            "cc-creativecommons",
-            "rstar-coder",
-        ),
         "hindi" to listOf("fineweb2-hindi", "c4-hindi"),
         "telugu" to listOf("fineweb2-telugu", "c4-telugu"),
+        "latin" to listOf(
+    "fineweb-edu-sample-10bt",
+    "fineweb-sample-10bt",
+    "refinedweb-sample",
+    "c4-en",
+    "open-markdown",
+    "cc-creativecommons",
+    "rstar-coder",
+),
     )
 
     fun pickLakeChain(queryTerms: List<String>): List<String> = CHAINS[detectScript(queryTerms)] ?: emptyList()
