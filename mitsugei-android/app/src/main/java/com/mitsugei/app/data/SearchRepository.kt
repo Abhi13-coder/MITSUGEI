@@ -59,7 +59,7 @@ class SearchRepository(
             val host = u.host?.removePrefix("www.") ?: url
             val path = u.path?.trimEnd('/')?.take(48) ?: ""
             if (path.isBlank() || path == "/") host
-            else "$host › ${path.trimStart('/').replace('/', ' › ')}"
+            else "$host › ${path.trimStart('/').replace("/", " › ")}"
         } catch (e: Exception) {
             url
         }
