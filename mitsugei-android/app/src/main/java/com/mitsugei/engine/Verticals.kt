@@ -37,7 +37,7 @@ interface Vertical {
 
 object WikipediaVertical : Vertical {
     override val name = "wikipedia"
-    private const val API = "https://en.wikipedia.org/w/api.php"
+    private  val API = "https://en.wikipedia.org/w/api.php"
     private val tagRe = Regex("<[^>]+>")
 
     override fun search(query: String, limit: Int): List<VerticalHit> {
@@ -60,7 +60,7 @@ object WikipediaVertical : Vertical {
 
 class GitHubVertical(private val token: String? = null) : Vertical {
     override val name = "github"
-    private const val API = "https://api.github.com/search/repositories"
+    private  val API = "https://api.github.com/search/repositories"
 
     override fun search(query: String, limit: Int): List<VerticalHit> {
         val url = "$API?q=${enc(query)}&per_page=${minOf(limit, 30)}&sort=stars"
@@ -88,7 +88,7 @@ class GitHubVertical(private val token: String? = null) : Vertical {
 
 object HuggingFaceVertical : Vertical {
     override val name = "huggingface"
-    private const val API = "https://huggingface.co/api"
+    private  val API = "https://huggingface.co/api"
 
     override fun search(query: String, limit: Int): List<VerticalHit> {
         val hits = ArrayList<VerticalHit>()
@@ -128,7 +128,7 @@ object HuggingFaceVertical : Vertical {
 
 object StackExchangeVertical : Vertical {
     override val name = "stackexchange"
-    private const val API = "https://api.stackexchange.com/2.3/search/advanced"
+    private  val API = "https://api.stackexchange.com/2.3/search/advanced"
 
     override fun search(query: String, limit: Int): List<VerticalHit> {
         val url = "$API?order=desc&sort=relevance&q=${enc(query)}&site=stackoverflow&pagesize=${minOf(limit, 30)}&filter=default"
@@ -154,7 +154,7 @@ object StackExchangeVertical : Vertical {
 
 object RedditVertical : Vertical {
     override val name = "reddit"
-    private const val API = "https://www.reddit.com/search.json"
+    private  val API = "https://www.reddit.com/search.json"
 
     override fun search(query: String, limit: Int): List<VerticalHit> {
         val url = "$API?q=${enc(query)}&limit=${minOf(limit, 25)}&sort=relevance&t=year"
